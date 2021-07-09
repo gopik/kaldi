@@ -13,6 +13,7 @@ set -euo pipefail
 
 stage=0
 trainset=train_si284
+testset="test"
 . ./cmd.sh ## You'll want to change cmd.sh to something that will work on your system.
            ## This relates to the queue.
 
@@ -56,7 +57,7 @@ fi
 if [ $stage -le 1 ]; then
   # make MFCC features for the test data. Only hires since it's flat-start.
   echo "$0: extracting MFCC features for the test sets"
-  for x in test_eval92 test_eval93 test_dev93; do
+  for x in $testset; do
     mv data/$x data/${x}_hires
     steps/make_mfcc.sh --cmd "$train_cmd" --nj 20 \
                        --mfcc-config conf/mfcc_hires.conf data/${x}_hires

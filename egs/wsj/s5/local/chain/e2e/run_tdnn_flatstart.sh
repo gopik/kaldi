@@ -161,6 +161,7 @@ if [ $stage -le 3 ]; then
     --cleanup.remove-egs true \
     --feat-dir data/${train_set} \
     --tree-dir $treedir \
+    --use-gpu wait \
     --dir $dir  || exit 1;
 fi
 
